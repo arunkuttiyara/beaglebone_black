@@ -1,0 +1,22 @@
+
+How to connect beagle bone to your laptop via ethernet, but still enabling networking in beaglebonbe
+
+
+1. Connect Beagle bone to your computer via USB serial cable, which will create a netwrok interface. In my Ubuntu system, it had a IP of 192.168.7.1 on eth1
+2. On beaglebone, there was a usb0 interface with IP 192.168.7.2
+3. In beaglebone add the route : route add default gateway 192.168.7.1
+4. In host computer, execute below steps to enable packet forwarding
+   a. sudo iptables -F // to delete exisiting ip table rules
+   b. /sbin/iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE // enable NAT at the wlan0 interface in Ubuntu
+   c. /sbin/iptables -A FORWARD -i eth1 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT // enable port forwarding
+   d. sudo /sbin/iptables -A FORWARD -i wlan0 -o eth1 -j ACCEPT // enable reverse port forwarding 
+5. Now from beaglebone black, ping 8.8.8.8, it should be able to connect to external network now.
+
+
+
+
+
+
+
+
+
