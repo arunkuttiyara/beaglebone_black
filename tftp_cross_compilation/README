@@ -1,0 +1,23 @@
+
+Objective :
+Download tftp source code and cross compile it for the beaglebone black
+
+
+steps 
+1. Dowbload tftp from https://sourceforge.net/projects/tftp/
+2. Download toolchain 
+   a. wget -c https://releases.linaro.org/components/toolchain/binaries/6.4-2018.05/arm-linux-gnueabihf/gcc-linaro-6.4.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
+   b. tar xf gcc-linaro-6.4.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
+3. Open Makefile in your downloaded tftp folder and set CC = /path_of_downloaded_toolchain/gcc-linaro-6.4.1-2018.05-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-gcc
+4. make
+5. scp tftpc root@192.168.7.2:/root/
+6. And execute the tftpc in your beaglebone black. 
+   ./tftpc  
+
+
+
+
+
+
+
+
