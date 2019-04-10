@@ -11,11 +11,7 @@ How to connect beagle bone to your laptop via ethernet, but still enabling netwo
    c. /sbin/iptables -A FORWARD -i eth1 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT // enable port forwarding
    d. sudo /sbin/iptables -A FORWARD -i wlan0 -o eth1 -j ACCEPT // enable reverse port forwarding 
 5. Now from beaglebone black, ping 8.8.8.8, it should be able to connect to external network now.
-
-
-
-
-
+6. If you want to know how the NATing working, monitor your wlan0[output ] and usb0 [ connection to beaglebone] interfaces in your system 
 
 
 
